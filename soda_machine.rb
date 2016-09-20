@@ -19,7 +19,7 @@ class SodaMachine
 
     # NOTE TO SELF: Don't need line 21 because if soda_brand_ary is empty, then calling for the 0th indexed element of soda_brand_ary, an empty array, will return nil anyway
     # return nil if soda_brand_ary.empty?
-    soda_brand_ary[0]
+    soda_brand_ary.first
   end
 
   def sell(soda_brand)
@@ -27,13 +27,10 @@ class SodaMachine
       soda.brand == soda_brand
     end
 
-    soda_brand_ary
-
     return nil if soda_brand_ary.empty?
-    sold_soda = soda_brand_ary[0]
-    sold_soda_index = @sodas.index(sold_soda)
+    sold_soda = soda_brand_ary.first
     @cash += sold_soda.price
-    @sodas.delete_at(sold_soda_index)
+    @sodas.delete_at(@sodas.index(sold_soda))
   end
 
 end
