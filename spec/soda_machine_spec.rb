@@ -52,6 +52,11 @@ describe SodaMachine do
       it "removes the sold soda from the machine" do
         expect(soda_machine.sodas).not_to include(coke_zero)
       end
+      it "removes the first instance of the soda occurring in the sodas list from the machine" do 
+        @sold_soda_pepsi = soda_machine.sell('Pepsi')
+        expect(soda_machine.sodas).not_to include(@sold_soda_pepsi)
+        expect(soda_machine.sodas).to include(second_pepsi)
+      end
     end
   end
 
